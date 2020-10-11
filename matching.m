@@ -2,16 +2,10 @@
 %                 Cooperative Game Theory                               %
 %                  Gale Shapley (Matching)                              %
 %               Preference based on distance                            %
-%       Preference based on losses shown in comments 42                 %
+%       Preference based on losses shown in comments 36                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
-%Remark 1 = Loop over all the sellers-buyers is coded here               %
-%Remark 2 = Loop over one buyer-seller association is coded in matching1 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
-
 function [l,lU,e, iter]  = matching(dist,distU,D,C,N)
-l=0;   %losses in the networked µgrid
+l=0;   %losses in the networked Âµgrid
 lU=0;  %losses due to exchange with the main grid 
 iter=0;%nbr of iterations til convergence 
 
@@ -31,7 +25,7 @@ if length(C) > 1
     sellersUp=sellers;   %Updated list of sellers
     buyersUp=buyers;     %Updated list of buyers
     loss=zeros(N, N);    %matrix of losses during the exchange
-    Exch=zeros(N, N);    %matrix of energy exchanged between µgrids
+    Exch=zeros(N, N);    %matrix of energy exchanged between Âµgrids
     
    %%%    Execute the matching until the sum of energy to sell/buy =0       
     while ~(isempty(sellersUp) || isempty(buyersUp))
