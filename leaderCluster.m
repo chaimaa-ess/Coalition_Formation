@@ -1,7 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                 Cooperative Game Theory                               %
-%                 Leader Cluster Algorithm   v3                         %
-%            No ascending nor descending order of µGs                   %
+%                 Leader Cluster Algorithm                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 L=5;                       % length of the square
@@ -99,7 +98,7 @@ n=1; %index to refere to the elements of the vector N
         end
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
         
-    %%%%%%%%%%%%%%%%%%%%%%%% Apply matching on GC %%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%% Apply matching on GC (grand coalition) %%%%%%%%%%%%%%%%%
         [lGC, eGC] = matching(dist, distU, D, (1:N), N);
         LossGC(n) = LossGC(n) + lGC ; %(n)
         Exchanged_Energy_GC(n) = Exchanged_Energy_GC(n) + eGC; %(n)
@@ -143,33 +142,3 @@ figure
 grid on
 plot(xlab, avg_iter);
 xlabel('N° of MGs'); ylabel('Average iter')
-
-%bell number: [1, 2, 5, 15, 52, 203, 877, 4140, 21147, 115975, 678570, 4213597]
-%%comments: for L=3km and ( N=20 ok, N=25 dont know, N=30 nook) *
-
-% % %                 [value, ~, ~, ~]  = matching1(dist,distU,D,C{1,i},N); %
-% % %                 [value_up, ~, ~, ~]  = matching1(dist,distU,D,C_up{1,i},N); %
-% % %                 if sum(value_up) > sum(value)
-% % %                     if value_up_old==0
-% % %                         value_up_old = sum(value_up);
-% % %                         value_old = sum(value);
-% % %                         ref=i;
-% % %                     elseif ( sum(value_up) + value_old ) > ( value_up_old + sum(value) ) 
-% % %                         value_up_old = sum(value_up);
-% % %                         value_old = sum(value);
-% % %                         ref=i;                    
-% % %                     end
-% % %                 end
-
-%             for i=1:length(C)
-%                C_up{1,i} = [C{1,i}, elt];
-%                 [value, ~, ~, ~]  = matching(dist,distU,D,C{1,i},N);
-%                 [value_up, ~, ~, ~]  = matching(dist,distU,D,C_up{1,i},N);
-%                 if sum(value_up) > sum(value)
-%                     if (value_ref ~=0) && (value_up(elt) > value_ref)
-%                         ref=i; value_ref = value_up(elt);
-%                     elseif value_ref ==0  
-%                         ref=i; value_ref = value_up(elt);
-%                     end
-%                 end
-%             end
